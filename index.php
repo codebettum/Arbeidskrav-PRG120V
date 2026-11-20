@@ -7,7 +7,7 @@
 
 <h2>Klasse</h2>
 <ul>
-  <li><a href="registrer-klasse.html">Registrer klasse</a></li>
+  <li><a href="registrer-klasse.php">Registrer klasse</a></li>
   <li><a href="vis-klasser.php">Vis alle klasser</a></li>
   <li><a href="slett-klasse.php">Slett klasse</a></li>
 </ul>
