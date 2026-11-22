@@ -40,13 +40,24 @@
             {
             print ("Alle felt må fylles ut");
             }
-        else
+         else
+        {
+          include("db-tilkobling.php");
+
+          $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
+          $sqlResultat=mysqli_query($db,$sqlSetning) or die ("Får ikke hentet data fra databasen");
+          $antallRader=mysqli_num_rows($sqlResultat);
+
+          if ($antallRader!=0)
             {
-            
-            $sqlSetning="INSERT INTO student VALUES ('$brukernavn','$fornavn','$etternavn','$klassekode');";
-            mysqli_query($db,$sqlSetning) or die ("ikke mulig å registrere data i databasen");
-            print ("Studenten $brukernavn er registrert");
+              print ("Brukernavnet $brukernavn er allerede registrert <br />");
             }
-        
+          else
+            {
+              $sqlSetning="INSERT INTO student VALUES ('$brukernavn','$fornavn','$etternavn','$klassekode');";
+              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
+              print ("Studenten $fornavn $etternavn er registrert <br />");
+            }
         }
-    ?>
+    }
+?>

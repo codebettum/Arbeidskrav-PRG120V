@@ -39,10 +39,20 @@
         {
           include("db-tilkobling.php");
 
-          $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
-          mysqli_query($db,$sqlSetning);
-          print ("Klassen $klassekode er slettet");
+          $sqlSetning="SELECT * FROM student WHERE klassekode='$klassekode';";
+          $sqlResultat=mysqli_query($db,$sqlSetning) or die;
+          $antallRader=mysqli_num_rows($sqlResultat);
+
+          if ($antallRader!=0)
+            {
+              print ("Klassen $klassekode har studenter og kan ikke slettes <br />");
+            }
+          else
+            {
+              $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
+              mysqli_query($db,$sqlSetning) or die ("Kan ikke slette klasse når en student er registrert i klassen.");
+              print ("Klassen $klassekode er slettet <br />");
+            }
         }
-      
     }
 ?>
