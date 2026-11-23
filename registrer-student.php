@@ -50,12 +50,12 @@
 
           if ($antallRader!=0)
             {
-              print ("Brukernavnet $brukernavn er allerede registrert <br />");
+              print ("Studenten $brukernavn er allerede registrert <br />");
             }
           else
             {
               $sqlSetning="INSERT INTO student VALUES ('$brukernavn','$fornavn','$etternavn','$klassekode');";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
+              mysqli_query($db,$sqlSetning) or die ("Klarer ikke hente data fra databsen");
               print ("Studenten $fornavn $etternavn er registrert <br />");
             }
         }
